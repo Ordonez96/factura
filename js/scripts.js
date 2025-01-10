@@ -54,7 +54,7 @@ document.getElementById("downloadWord").addEventListener("click", async () => {
     const qrImage = document.createElement("img");
     qrImage.src = qrCanvas.toDataURL("image/png");
     qrImage.alt = "Código QR";
-    qrCanvas.replaceWith(qrImage); // Reemplaza el canvas por la imagen
+    qrCanvas.replaceWith(qrImage); // Reemplazar el canvas por la imagen
   }
 
   // Copia el contenido del contenedor con estilos inline
