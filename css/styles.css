@@ -17,7 +17,7 @@ header {
   display: flex;
   justify-content: space-between;
   border-bottom: 2px solid #007bff;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 header .logo img {
@@ -33,7 +33,7 @@ header .invoice-info {
 }
 
 section {
-  margin-top: 20px;
+  margin-top: 10px;
   background: #ffffff;
   border-radius: 10px;
   padding: 15px;
@@ -47,14 +47,14 @@ section {
 }
 
 .left-column {
-  width: 48%;
+  width: 49.5%;
   display: flex;
   flex-direction: column;
-  gap: 20px;
+  gap: 0px;
 }
 
 .right-column {
-  width: 48%;
+  width: 49.5%;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
@@ -72,18 +72,18 @@ section {
 table {
   width: 100%;
   border-collapse: collapse;
-  margin-top: 10px;
+  margin-top: 0px;
 }
 
 table,
 th,
 td {
-  border: 1px solid #ccc;
+  border: 0.5px solid #ccc;
 }
 
 th,
 td {
-  padding: 8px;
+  padding: 1px;
   text-align: left;
 }
 
@@ -106,7 +106,7 @@ footer img {
 /* Botones de descarga */
 .download-buttons {
   text-align: center;
-  margin-top: 20px;
+  margin-top: 10px;
 }
 
 .download-buttons button {
