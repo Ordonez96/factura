@@ -45,11 +45,53 @@ document.getElementById("downloadPDF").addEventListener("click", () => {
 });
 
 // Descargar como Word
-document.getElementById("downloadWord").addEventListener("click", () => {
-  const element = document.querySelector(".container").outerHTML; // Extraer el HTML
-  const blob = new Blob(['\ufeff' + element], { type: "application/msword" });
-  const link = document.createElement("a");
+document.getElementById("downloadWord").addEventListener("click", async () => {
+  const container = document.querySelector(".container"); // Contenedor principal
 
+  // Convierte imágenes dinámicas (canvas QR) a base64
+  const qrCanvas = document.getElementById("qrCodeCanvas");
+  if (qrCanvas) {
+    const qrImage = document.createElement("img");
+    qrImage.src = qrCanvas.toDataURL("image/png");
+    qrImage.alt = "Código QR";
+    qrCanvas.replaceWith(qrImage); // Reemplaza el canvas por la imagen
+  }
+
+  // Copia el contenido del contenedor con estilos inline
+  const clonedContainer = container.cloneNode(true);
+
+  // Aplica estilos inline para garantizar la compatibilidad
+  const applyInlineStyles = (element) => {
+    const computedStyle = window.getComputedStyle(element);
+    for (const key of computedStyle) {
+      element.style[key] = computedStyle.getPropertyValue(key);
+    }
+    for (const child of element.children) {
+      applyInlineStyles(child);
+    }
+  };
+  applyInlineStyles(clonedContainer);
+
+  // Construye el HTML con el contenedor estilizado
+  const htmlContent = `
+    <html>
+      <head>
+        <meta charset="UTF-8">
+        <title>Factura de Energía</title>
+      </head>
+      <body>
+        ${clonedContainer.outerHTML}
+      </body>
+    </html>
+  `;
+
+  // Crea el archivo Blob para Word
+  const blob = new Blob(['\ufeff' + htmlContent], {
+    type: "application/msword",
+  });
+
+  // Descarga el archivo
+  const link = document.createElement("a");
   link.href = URL.createObjectURL(blob);
   link.download = "Factura_Energia.doc";
   link.click();
