@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Factura de Energía</title>
+  <link rel="stylesheet" href="css/styles.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode/1.4.4/qrcode.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.4.0/jspdf.umd.min.js"></script>
+</head>
+<body>
+  <div class="container">
+    <!-- Encabezado -->
+    <header>
+      <div class="logo">
+        <img src="img/logo-placeholder.png" alt="Logo de la Empresa">
+      </div>
+      <div class="company-info">
+        <h1>Abruzzo, S.A. de C.V.</h1>
+        <p>Distribuidora de Energía Eléctrica</p>
+        <p>Dirección: Final 1 Sur y Blvd. Sur...</p>
+      </div>
+      <div class="invoice-info">
+        <p><strong>NIC:</strong> 7000792</p>
+        <p><strong>NIT:</strong> 400472</p>
+        <p><strong>Fecha de Vencimiento:</strong> 10-12-2024</p>
+      </div>
+    </header>
+
+    <!-- Información del Cliente -->
+    <section class="client-info">
+      <h2>Cliente</h2>
+      <p><strong>Dirección:</strong> Calle al Pto 189...</p>
+      <table>
+        <tr>
+          <th>Fecha de emisión</th>
+          <th>Periodo facturado</th>
+          <th>Días facturados</th>
+          <th>Capacidad instalada</th>
+          <th>Demanda facturada</th>
+        </tr>
+        <tr>
+          <td>30/08/2024</td>
+          <td>31/08/2024 - 30/04/2024</td>
+          <td>31</td>
+          <td>300.000</td>
+          <td>433.2</td>
+        </tr>
+      </table>
+    </section>
+
+    <!-- Gráfico de Consumo y Detalles -->
+    <section class="chart-and-details">
+      <!-- Columna Izquierda -->
+      <div class="left-column">
+        <section class="consumption-chart">
+          <h2>Consumo kWh</h2>
+          <canvas id="consumptionChart"></canvas>
+        </section>
+        <section class="alcaldia-info">
+          <h2>Información de la Alcaldía</h2>
+          <p>Detalles relevantes de la alcaldía...</p>
+        </section>
+        <section class="payment-info">
+          <h2>Formas de Pago</h2>
+          <p>Banco Agrícola...</p>
+        </section>
+        <section class="qr-section">
+          <h2>Detalles Digitales</h2>
+          <p>Escanea este código QR para más información:</p>
+          <canvas id="qrCodeCanvas"></canvas>
+        </section>
+      </div>
+
+      <!-- Columna Derecha -->
+      <div class="right-column">
+        <section class="billing-details">
+          <h2>Detalle de la Facturación</h2>
+          <table>
+            <tr>
+              <th>Descripción</th>
+              <th>No Sujeto</th>
+              <th>Exentos</th>
+              <th>Gravados</th>
+            </tr>
+            <tr>
+              <td>Cargo por atención al cliente</td>
+              <td>0.00</td>
+              <td>0.00</td>
+              <td>0.00</td>
+            </tr>
+          </table>
+          <p><strong>Total a pagar:</strong> $0.01</p>
+        </section>
+      </div>
+    </section>
+
+    
+    <!-- Pie de página -->
+    <footer>
+        <div class="contact-info">
+            <p>Llama a nuestro número de emergencia 6025-0347</p>
+        </div>
+    </footer>
+</div>
+<!-- Descargas -->
+<section class="download-buttons">
+  <h2>Descargar Factura</h2>
+  <button id="downloadPDF">Descargar como PDF</button>
+  <button id="downloadWord">Descargar como Word</button>
+</section>
+
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="js/scripts.js"></script>
+</body>
+</html>
